@@ -1,0 +1,38 @@
+aws s3api list-objects –bucket my-bucket –page-size 100
+aws s3api list-objects –bucket my-bucket –max-items 50
+
+aws ec2 run-instances --generate-cli-skeleton > ec2runinst.json
+aws ec2 run-instances --cli-input-json file://ec2runinst.json
+aws ec2 authorize-security-group-ingress --group-id security_group_id --protocol tcp --port 22 --cidr cidr_ip_range
+aws ac2 describe-images --owners self amazon
+aws ac2 describe-images --executable-users all
+aws ec2 modify-instance-attribute –instance-id 1234567890abcdef0 -DisableApiTermination true
+aws ec2 modify-instance-attribute –instance-id 1234567890abcdef0 -InstanceInitiatedShutdownBehavior terminate
+aws ec2 modify-instance-attribute --instance-id i-1234567890abcdef0 --block-device-mappings file://mapping.json
+aws ec2 describe-instance-status –instance-id i-1234567890abcdef0
+
+aws ec2 run-instances --instance-type t2.micro --image-id ami-03657b56516ab7912 --count 32
+aws ec2 run-instances --image-id ami-abc1234 --count 1 --instance-type m4.large --key-name keypair --user-data file://my_script.txt --subnet-id subnet-abcd1234 --security-group-ids sg-abcd1234
+https://169.254.169.254/latest/meta-data/
+
+ssh -i "ebozdag.pem" ec2-user@ec2-54-245-221-223.us-west-2.compute.amazonaws.com
+
+ecs-cli up -keypair <keypair_name> --capability-iam –size 6 –instance-type c4.large –cluster test1
+ecs-cli up –launch-type FARGATE –capability-iam –cluster test1
+
+
+aws configure set default.s3.signature_version s3v4
+
+aws cloudwatch set-alarm-state --alarm-name "myalarm" --state-value ALARM --state-reason "testing purposes"
+aws cloudwatch get-metric-statistics --metric-name CPUUtilization --start-time 2019-03-23T12:00:00Z
+ --end-time 2019-03-24T12:00:00Z --period 14400 --namespace AWS/EC2 --statistics Maximum --dimensions Name=InstanceId,Value=i-2312ab231353
+aws cloudwatch list-metrics --namespace AWS/EC2
+aws ec2 monitor-instances –instance-ids i-1234abcdef
+
+split -b 40M video.mp4
+
+sudo amazon-linux-extras install epel -y
+yum install stress -y
+sudo stress --cpu 10 -v --timeout 400s
+
+aws ec2 monitor-instances --instance-ids <instance-id> 
