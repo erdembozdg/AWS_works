@@ -36,3 +36,13 @@ yum install stress -y
 sudo stress --cpu 10 -v --timeout 400s
 
 aws ec2 monitor-instances --instance-ids <instance-id> 
+aws cloudwatch set-alarm-state --alarm-name "cpu-monitoring" --state-reason "initializing" --state-value ALARM
+
+aws sns create-topic --name "my-demo-sns-topic"
+aws sns subscribe --topic-arn arn:aws:sns:us-west-2:123456667:my-demo-sns-topic --protocol email --notification-endpoint test@gmail.com
+aws sns publish --topic-arn arn:aws:sns:us-west-2:1234567:my-demo-sns-topic --message "hello from sns"
+aws sns list-subscriptions
+aws sns unsubscribe --subscription-arn arn:aws:sns:us-west-2:1234567899:my-demo-sns-topic:f28124be-850b-4a2e-8d3e-a3dc4f7cca1a
+aws sns delete-topic --topic-arn arn:aws:sns:us-west-2:1234567788:my-demo-sns-topic
+aws sns list-topics
+
